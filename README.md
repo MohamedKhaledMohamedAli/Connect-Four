@@ -1,5 +1,4 @@
 # Connect-Four
 
-We got the code from internet.
-
-The modification made that we decreased the time complexity from O(n^3) to O(n)
+The modification made that we decreased the time complexity from O(n^3) to O(n) by
+changing the winningMove function from nested loops to only loops of O(n)

@@ -303,7 +303,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	unsigned int winSequence = 0; // to count adjacent pieces
 	// for horizontal checks
 	for (int i = 0; i < 4; i++) { // recall you need 4 to win
-		if((col+i)>7){continue;}
+		if((col+i)>7){break;}
 		else if ((unsigned int)b[row][col + i] == p) { // if not all pieces match
             winSequence++;
         }
@@ -311,7 +311,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
         if (winSequence == 4) { return true; }
     }
     for (int i = 1; i < 4; i++) { // recall you need 4 to win
-		if((col-i)<0) {continue;}
+		if((col-i)<0) {break;}
 		else if ((unsigned int)b[row][col - i] == p) { // if not all pieces match
             winSequence++;
         }
@@ -321,7 +321,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	winSequence = 0; // reset counter
 	// vertical checks
     for (int i = 0; i < 4; i++) { // recall you need 4 to win
-		if((row+i)>5){continue;}
+		if((row+i)>5){break;}
 		else if ((unsigned int)b[row + i][col] == p) { // if not all pieces match
             winSequence++;
         }
@@ -329,7 +329,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
         if (winSequence == 4) { return true; }
     }
     for (int i = 1; i < 4; i++) { // recall you need 4 to win
-		if((row-i)<0) {continue;}
+		if((row-i)<0) {break;}
 		else if ((unsigned int)b[row - i][col] == p) { // if not all pieces match
             winSequence++;
         }
@@ -339,7 +339,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	winSequence = 0; // reset counter
 	// the below two are diagonal checks
 	for (int i = 0; i < 4; i++) {
-		if(((row-i)<0)||((col+i)>6)) {continue;}
+		if(((row-i)<0)||((col+i)>6)) {break;}
 		else if ((unsigned int)b[row - i][col + i] == p) {
 			winSequence++;
 		}
@@ -347,7 +347,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 		if (winSequence == 4) { return true; }
 	}
 	for (int i = 1; i < 4; i++) {
-		if(((col-i)<0)||((row+i)>5)) {continue;}
+		if(((col-i)<0)||((row+i)>5)) {break;}
 		else if ((unsigned int)b[row + i][col - i] == p) {
 			winSequence++;
 		}
@@ -356,7 +356,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	}
 	winSequence = 0;
     for (int i = 0; i < 4; i++) {
-		if(((col+i)>7)||((row+i)>5)){continue;}
+		if(((col+i)>7)||((row+i)>5)){break;}
 		else if ((unsigned int)b[row + i][col + i] == p) {
 			winSequence++;
 		}
@@ -364,7 +364,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 		if (winSequence == 4) { return true; }
 	}
 	for (int i = 1; i < 4; i++) {
-		if(((row-i)<0)||((col-i)<0)){continue;}
+		if(((row-i)<0)||((col-i)<0)){break;}
 		else if ((unsigned int)b[row - i][col - i] == p) {
 			winSequence++;
 		}

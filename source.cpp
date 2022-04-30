@@ -303,7 +303,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	unsigned int winSequence = 0; // to count adjacent pieces
 	// for horizontal checks
 	for (int i = 0; i < 4; i++) { // recall you need 4 to win
-		if((col+i)>7){break;}
+		if((col+i)>6){break;}
 		else if ((unsigned int)b[row][col + i] == p) { // if not all pieces match
             winSequence++;
         }
@@ -356,7 +356,7 @@ bool winningMove(vector<vector<int> > &b, unsigned int p , int row, int col) {
 	}
 	winSequence = 0;
     for (int i = 0; i < 4; i++) {
-		if(((col+i)>7)||((row+i)>5)){break;}
+		if(((col+i)>6)||((row+i)>5)){break;}
 		else if ((unsigned int)b[row + i][col + i] == p) {
 			winSequence++;
 		}

@@ -4,6 +4,7 @@
 #include <limits.h>
 #include <array>
 #include <sstream>
+#include <time.h>
 
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 #define max(a,b) (((a) > (b)) ? (a) : (b))
@@ -29,6 +30,7 @@ unsigned int NUM_ROW = 6; // how tall
 unsigned int PLAYER = 1; // player number
 unsigned int COMPUTER = 2; // AI number
 unsigned int MAX_DEPTH = 5; // the default "difficulty" of the computer controlled AI
+double time_input=0; //time input collector
 
 bool gameOver = false; // flag for if game is over
 unsigned int turns = 0; // count for # turns
@@ -93,6 +95,7 @@ void makeMove(vector<vector<int> >& b, int c, unsigned int p) {
  */
 int userMove() {
 	int move = -1; // temporary
+	double start=clock();
 	while (true) { // repeat until proper input given
 		cout << "Enter a column: ";
 		cin >> move; // init move as input
@@ -112,6 +115,8 @@ int userMove() {
 		}
 		cout << endl << endl;
 	}
+	double finish=clock();
+	time_input+=(finish-start)/CLOCKS_PER_SEC;
 	return move;
 }
 
@@ -449,6 +454,7 @@ void errorMessage(int t) {
  * main driver
  */
 int main(int argc, char** argv) {
+	double start=clock();
 	int i = -1; bool flag = false;
 	if (argc == 2) {
 		istringstream in(argv[1]);
@@ -459,5 +465,9 @@ int main(int argc, char** argv) {
 	}
 	initBoard(); // initial setup
 	playGame(); // begin the game
+	double finish=clock();
+	double final_time=0;
+	
+	cout<<"time:"<<((finish-start)/CLOCKS_PER_SEC)-time_input<<endl;
 	return 0; // exit state
 }
